@@ -137,8 +137,9 @@ class ComputedField
   increment: (collection, fieldName, incMethod) ->
     field = this
     @simple collection, fieldName, (doc, externalDoc) ->
-      jsonPath = Npm.require('JSONPath')
-      current = parseFloat jsonPath.eval doc, field.name
+      current = _.reduce field.name.split("."), (field, part) ->
+        field && field[part]
+      , doc
       (current or 0) + incMethod.call this, doc, externalDoc
     return this
   count: (collection, fieldName) ->

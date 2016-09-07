@@ -5,10 +5,6 @@ Package.describe({
   git: 'https://github.com/maximummeteor/computed-fields.git'
 });
 
-Npm.depends({
-  'JSONPath': '0.10.0',
-});
-
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use([
